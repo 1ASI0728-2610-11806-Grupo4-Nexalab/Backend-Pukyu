@@ -20,7 +20,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:4200",        # Angular dev server
         "http://localhost:4000",        # Angular SSR dev server
-        "https://*.vercel.app",         # Si el frontend se despliega en Vercel
+        "https://frontend-parky.vercel.app", # Vercel Frontend
+        "https://*.vercel.app",         # Si el frontend se despliega en Vercel (subdominios)
         "*",                            # Temporalmente abierto para desarrollo
     ],
     allow_credentials=True,
