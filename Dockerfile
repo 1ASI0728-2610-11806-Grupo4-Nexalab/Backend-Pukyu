@@ -13,6 +13,10 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./app /code/app
 COPY ./simulation /code/simulation
+COPY ./download_model.py /code/download_model.py
 
-# Iniciar el servidor leyendo el puerto dinámico asignado por la plataforma (Render usa 10000, local usa 8000)
+# Pre-descargar el modelo YOLO para acelerar el inicio en Render
+RUN python download_model.py
+
+# Iniciar el servidor
 CMD uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}
